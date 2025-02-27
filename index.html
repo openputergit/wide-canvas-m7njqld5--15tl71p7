@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harsh Cargo Movers - Business Card</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f2f5;
+        }
+        .card-hover:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        .text-wrap {
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen flex items-center justify-center p-4">
+        <div class="card-hover bg-white rounded-xl shadow-lg transition-all duration-300 max-w-md w-full p-6 text-blue-700">
+            <div class="flex flex-col items-center">
+                <!-- Profile Image -->
+                <div class="w-32 h-32 bg-blue-100 rounded-full mb-4 flex items-center justify-center">
+                    <i class="bi bi-truck text-6xl"></i>
+                </div>
+
+                <!-- Name -->
+                <h1 class="text-2xl font-bold mb-2 text-center">Harsh Cargo Movers</h1>
+                <p class="text-sm text-blue-600 mb-4">Logistics & Transportation</p>
+
+                <!-- Divider -->
+                <div class="w-full border-t border-blue-100 my-4"></div>
+
+                <!-- Contact Information -->
+                <div class="w-full space-y-3">
+                    <div class="flex items-center hover:bg-blue-50 p-2 rounded-lg transition-colors cursor-pointer" onclick="copyToClipboard('+91 93277 18867')">
+                        <i class="bi bi-telephone-fill mr-3 text-xl"></i>
+                        <span>+91 93277 18867</span>
+                    </div>
+
+                    <div class="flex items-center hover:bg-blue-50 p-2 rounded-lg transition-colors cursor-pointer text-wrap" onclick="copyToClipboard('harshcarg2007@gmail.com')">
+                        <i class="bi bi-envelope-fill mr-3 text-xl"></i>
+                        <span>harshcarg2007@gmail.com</span>
+                    </div>
+
+                    <div class="flex items-center hover:bg-blue-50 p-2 rounded-lg transition-colors cursor-pointer" onclick="copyToClipboard('+91 95379 88269')">
+                        <i class="bi bi-whatsapp mr-3 text-xl"></i>
+                        <span>+91 95379 88269</span>
+                    </div>
+
+                    <div class="flex items-center hover:bg-blue-50 p-2 rounded-lg transition-colors cursor-pointer" onclick="copyToClipboard('Office No.107, City Centre Near Char Rasta, Vapi, 396195')">
+                        <i class="bi bi-geo-alt-fill mr-3 text-xl"></i>
+                        <span>Office No.107, City Centre Near Char Rasta, Vapi, 396195</span>
+                    </div>
+                </div>
+
+                <!-- Save Contact Button -->
+                <button onclick="downloadVCard()" class="mt-6 bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors duration-300 flex items-center">
+                    <i class="bi bi-person-plus-fill mr-2"></i>
+                    Save Contact
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+            });
+        }
+
+        function downloadVCard() {
+            const vCard = `BEGIN:VCARD
+VERSION:3.0
+FN:Harsh Cargo Movers
+ORG:Harsh Cargo Movers
+TITLE:Logistics & Transportation
+TEL:+91 93277 18867
+EMAIL:harshcarg2007@gmail.com
+TEL;type=CELL:+91 95379 88269
+ADR:;;Office No.107, City Centre Near Char Rasta;Vapi;;396195;India
+END:VCARD`;
+
+            const blob = new Blob([vCard], { type: 'text/vcard' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            a.download = 'harsh_cargo_movers.vcf';
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+        }
+    </script>
+<script>document.body.addEventListener('wheel', e => { if (!e.ctrlKey) return; e.preventDefault(); return }, { passive: false })</script>
+	</body>
+</html>
